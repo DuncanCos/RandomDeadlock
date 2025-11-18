@@ -15,7 +15,7 @@ function App() {
   ])
 
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * heroLists.length -1)
+    const randomIndex = Math.floor(Math.random() * heroLists.length)
     setChoosedHero(heroLists[randomIndex])
   }, [reset])
 
@@ -28,58 +28,58 @@ function App() {
   return (
     <div className="flex max-h-screen bg-black text-white">
 
-<div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-1/3 p-4 overflow-y-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-1/3 p-4 overflow-y-auto">
 
-      {heroLists.map(hero => (
-        <div
-          key={hero.name}
-          className="relative"
-          style={{ width: "88px", height: "119px" }}
-        >
-          {/* Nom en overlay */}
-          <h2 className="absolute bottom-0 inset-x-0 w-full text-center text-white text-xs font-bold 
+        {heroLists.map(hero => (
+          <div
+            key={hero.name}
+            className="relative"
+            style={{ width: "88px", height: "119px" }}
+          >
+            {/* Nom en overlay */}
+            <h2 className="absolute bottom-0 inset-x-0 w-full text-center text-white text-xs font-bold 
                      bg-black/50 py-1 z-10">
-            {hero.name}
-          </h2>
+              {hero.name}
+            </h2>
 
-          {/* Image */}
-          <img
-            src={`/deadlockCards/88px-${hero.name.replace(/\s+/g, '_')}_card.png`}
-            alt={hero.name}
-            className="w-full h-full object-cover"
-            onError={(e) => { e.target.style.display = 'none' }}
-          />
-        </div>
-      ))}
+            {/* Image */}
+            <img
+              src={`/deadlockCards/88px-${hero.name.replace(/\s+/g, '_')}_card.png`}
+              alt={hero.name}
+              className="w-full h-full object-cover"
+              onError={(e) => { e.target.style.display = 'none' }}
+            />
+          </div>
+        ))}
 
-    </div>
+      </div>
 
-  
-  <div className="relative flex-1 flex items-center justify-center">
 
-    <img
-      src={heroImage}
-      alt={choosedHero.name}
-      className="h-screen object-contain"
-      onError={(e) => { e.target.style.display = 'none' }}
-    />
+      <div className="relative flex-1 flex items-center justify-center">
 
-    <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center pointer-events-none">
-      <img className=" drop-shadow-lg"
-      src={heroName}
+        <img
+          src={heroImage}
+          alt={choosedHero.name}
+          className="h-screen object-contain"
+          onError={(e) => { e.target.style.display = 'none' }}
         />
 
-      <button
-        className="btn btn-primary mt-6 pointer-events-auto"
-        onClick={() => setReset(!reset)}
-      >
-        Choisir à nouveau
-      </button>
-    </div>
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center pointer-events-none">
+          <img className=" drop-shadow-lg"
+            src={heroName}
+          />
 
-  </div>
+          <button
+            className="btn btn-primary mt-6 pointer-events-auto"
+            onClick={() => setReset(!reset)}
+          >
+            Choisir à nouveau
+          </button>
+        </div>
 
-</div >
+      </div>
+
+    </div >
 
 
 
